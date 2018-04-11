@@ -1,0 +1,29 @@
+{
+    "name": "uogsoe/ldap-laravel",
+    "description": "Adds a custom auth provider for our LDAP service",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Billy",
+            "email": "william.allan@glasgow.ac.uk"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "ohffs/simple-laravel-ldap": "dev-master"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "UoGSoE\\LaravelLdap\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    }
+}
