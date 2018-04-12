@@ -6,12 +6,6 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 
 class LaravelLdapServiceProvider extends ServiceProvider
 {
-    public function register()
-    {
-        $this->mergeConfigFrom(__DIR__.'/../config/ldap.php', 'auth');
-        dd(config('auth'));
-    }
-
     public function boot()
     {
         \Auth::provider('ldapeloquent', function ($app, array $config) {
