@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "UogSoE\\LaravelLdap\\LaravelLdapServiceProvider"
+                "UoGSoE\\LaravelLdap\\LaravelLdapServiceProvider"
             ]
         }
     }
