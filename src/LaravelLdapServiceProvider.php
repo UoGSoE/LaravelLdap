@@ -1,6 +1,6 @@
 <?php
 
-namespace UogSoe\LaravelLdap;
+namespace UoGSoE\LaravelLdap;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

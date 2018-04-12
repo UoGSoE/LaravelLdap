@@ -1,6 +1,6 @@
 <?php
 
-namespace UogSoe\LaravelLdap;
+namespace UoGSoE\LaravelLdap;
 
 use App\User;
 use Illuminate\Support\Str;
