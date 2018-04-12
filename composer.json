@@ -11,7 +11,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "ohffs/simple-laravel-ldap": "dev-master"
+        "ohffs/simple-laravel-ldap": "~1.0"
     },
     "require-dev": {
         "orchestra/testbench": "~3.0"
