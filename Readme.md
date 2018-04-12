@@ -1,4 +1,4 @@
-# LDAP/Eloquent user provider for Laravel
+# Mixed LDAP/Eloquent user provider for Laravel
 
 WIP! Do not use!
 
@@ -11,23 +11,43 @@ It does :
 
 ## Usage
 
-In your `config/auth.php` file just change 'users' to 'ldapusers' in the default web guard :
+In your `config/auth.php` file add the new provider and change 'users' to 'ldapusers' in the default web guard :
 ```
 ...
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'ldapusers',
-            // was 'users'
+            // originally 'provider' => 'users'
         ],
     ...
+    'providers' => [
+        ...
+        'ldapusers' => [
+            'driver' => 'ldapeloquent',
+            'model' => App\User::class,
+        ],
+    ]
 ```
+
+And you need to add the following to app\Http\Controllers\Auth\LoginController.php (assumes you've run `artisan make:auth`) :
+
+```
+    public function username()
+    {
+        return 'username';
+    }
+```
+
 You need to set two ENV variables in your .env file :
+
 ```
 LDAP_SERVER=your.ldap.server
 LDAP_OU=your-base-ou
 ```
+
 eg :
+
 ```
 LDAP_SERVER=ldap.yourcompany.com
 LDAP_OU=Staff
@@ -37,9 +57,9 @@ LDAP_OU=Staff
 
 We assume your user model is in the default `App\User` class.  We also expect the `users` table to have the following fields :
 ```
-username - the primary username to look up (rather than 'email')
-email - the users email address
-surname - the users surname
-forenames - the users forenames
-is_staff - whether the user is a member of staff or not
+username (string) - the primary username to look up (rather than 'email')
+email (string) - the users email address
+surname (string) - the users surname
+forenames (string) - the users forenames
+is_staff (boolean) - whether the user is a member of staff or not
 ```
