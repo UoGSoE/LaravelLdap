@@ -63,3 +63,7 @@ surname (string) - the users surname
 forenames (string) - the users forenames
 is_staff (boolean) - whether the user is a member of staff or not
 ```
+
+## Tests
+
+There aren't any tests in this repo itself as it was a bit of a pain to write them without the full framework being available.  So there is a test app at https://github.com/UoGSoE/test-LaravelLdap which pulls this package in and checks it seems to work ok.
