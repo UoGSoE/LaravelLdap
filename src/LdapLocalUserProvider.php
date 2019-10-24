@@ -24,7 +24,7 @@ class LdapLocalUserProvider extends \Illuminate\Auth\EloquentUserProvider
             return null;
         }
         $user = new User;
-        $user->password = bcrypt(str_random(64));
+        $user->password = bcrypt(Str::random(64));
         $user->username = $this->ldapUser->username;
         $user->email = $this->ldapUser->email;
         $user->surname = $this->ldapUser->surname;
