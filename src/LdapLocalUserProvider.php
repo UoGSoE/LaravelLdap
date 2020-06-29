@@ -14,6 +14,10 @@ class LdapLocalUserProvider extends \Illuminate\Auth\EloquentUserProvider
 
     public function retrieveByCredentials(array $credentials)
     {
+        if (array_key_exists('username', $credentials)) {
+            $credentials['username'] = strtolower($credentials['username']);
+        }
+
         $user = parent::retrieveByCredentials($credentials);
         if ($user) {
             return $user;
@@ -25,8 +29,8 @@ class LdapLocalUserProvider extends \Illuminate\Auth\EloquentUserProvider
         }
         $user = new User;
         $user->password = bcrypt(Str::random(64));
-        $user->username = $this->ldapUser->username;
-        $user->email = $this->ldapUser->email;
+        $user->username = strtolower($this->ldapUser->username);
+        $user->email = strtolower($this->ldapUser->email);
         $user->surname = $this->ldapUser->surname;
         $user->forenames = $this->ldapUser->forenames;
         if ($this->looksLikeMatric($this->ldapUser->username)) {
@@ -40,6 +44,10 @@ class LdapLocalUserProvider extends \Illuminate\Auth\EloquentUserProvider
 
     public function validateCredentials(UserContract $user, array $credentials)
     {
+        if (array_key_exists('username', $credentials)) {
+            $credentials['username'] = strtolower($credentials['username']);
+        }
+
         $password = $credentials['password'];
         if (! $password) {
             return false;
@@ -60,8 +68,8 @@ class LdapLocalUserProvider extends \Illuminate\Auth\EloquentUserProvider
         if (! $localUser) {
             throw new \Exception('Could not find local user matching username');
         }
-        $localUser->username = $this->ldapUser->username;
-        $localUser->email = $this->ldapUser->email;
+        $localUser->username = strtolower($this->ldapUser->username);
+        $localUser->email = strtolower($this->ldapUser->email);
         $localUser->surname = $this->ldapUser->surname;
         $localUser->forenames = $this->ldapUser->forenames;
         $localUser->save();
