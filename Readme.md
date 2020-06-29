@@ -2,7 +2,6 @@
 
 WIP! Do not use!
 
-
 This adds an 'ldapusers' provider to the Laravel auth scheme.  This is for our own particular needs and works the way we generally use our local LDAP service.
 
 It does :
