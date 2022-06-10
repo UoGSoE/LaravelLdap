@@ -11,10 +11,10 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "ohffs/simple-laravel-ldap": "~1.0"
+        "ohffs/simple-laravel-ldap": "~2.0"
     },
     "require-dev": {
-        "orchestra/testbench": "~3.0"
+        "orchestra/testbench": "~7.0"
     },
     "autoload": {
         "psr-4": {
